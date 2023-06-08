@@ -1,0 +1,31 @@
+category:  misc
+points:    150
+title:     Как я провелето
+author:    enhydra
+depends_on: [or, deepend, cobweb]
+track:     neutral
+description: |
+  <pre>
+  МИНИСТЕРСТВО ОБРАЗОВАНИЯ СССР
+
+  УРАЛЬСКИЙ НАУЧНО-ИССЛЕДОВАТЕЛЬСКИЙ ИНСТИТУТ КОММУНИСТИЧЕСКОЙ КИБЕРНЕТИКИ
+
+  КАФЕДРА УЧЕНИЯ УЦУЦУГИ
+
+  [...] известным, что выглядят как нормальные дети, однако [...] измерительные приборы
+  на данном этапе бессильны, эффект остаётся недостаточно изученным.
+  </pre>
+attachments_path: attachments
+generator: ../_scripts/kyzylborda-lib-generator
+bullets:
+  - <code>nc summerspent.{{hostname}} 6069</code>
+  - "Токен: <code>{{token}}</code>"
+daemon:
+  exec: kyzylborda-docker-compose-daemon
+  cwd: app
+  socket: ./app.sock
+  socket_type: tcp
+  tcp_port: 6069
+secrets:
+  seed: opuegh2noo8Eibeub2aeleiZu4eong8ieMeis8oiBaeF
+  flag: ugra_respect_the_sorrow_of_the_sufferers_[a-z0-9]{16}

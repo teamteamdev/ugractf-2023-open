@@ -1,0 +1,25 @@
+category: recon
+points:   150
+title:    Главная дорога
+author:   nsychev
+track:    lawful
+description: |
+  <pre>
+  From: sapovarova.a.n@[...]
+  To: mikhailov.n.v@[...]
+  Subject: Re: Командировочный лист
+
+  Николай Владимирович! Прикрепите билеты, пожалуйста а то даже не понятно куда Вы уехали.
+  Мы так возмещать не имеем права.
+  </pre>
+  <p>Количество попыток ограничено. Используйте их аккуратно; в просьбах принять ответ при истраченных попытках будет отказано.</p>
+  <p>Не ломайте проверяющую систему, в ней нет известных авторам уязвимостей. Настойчивые попытки получить флаг иным способом, кроме отправки верного ответа в рамках отведённого числа попыток, будут считаться атаками на инфраструктуру соревнований.</p>
+generator: ../_scripts/kyzylborda-lib-generator
+daemon:
+  exec: kyzylborda-docker-compose-daemon
+  cwd: app
+  socket: ./app.sock
+  socket_type: http
+secrets:
+  seed: cooL4aixaepheeC0othien5thohxisahva0Laen9phor
+  flag: ugra_unique_does_not_mean_convenient_[a-z0-9]{16}

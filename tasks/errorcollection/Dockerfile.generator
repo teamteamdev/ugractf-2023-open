@@ -1,0 +1,7 @@
+FROM imachug/kyzylborda_lib
+RUN apk add --no-cache gcc g++ musl-dev linux-headers zbar libzbar zbar-dev py3-numpy py3-pillow py3-numpy-dev
+WORKDIR .
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+COPY generator.py /base/generator.py
+ENTRYPOINT ["kyzylborda-generate", "generator"]

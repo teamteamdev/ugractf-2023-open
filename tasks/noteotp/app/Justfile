@@ -1,0 +1,55 @@
+clean:
+    podman rm -fi noteotp-pgslave
+    podman rm -fi noteotp-pgmaster
+    if podman volume exists noteotp-slave-data; then \
+        podman volume rm noteotp-slave-data; \
+    fi
+    if podman pod exists noteotp; then \
+        podman pod rm noteotp; \
+    fi
+
+volume:
+    if podman volume exists noteotp-slave-data; then \
+      podman volume rm noteotp-slave-data; \
+    fi
+    podman volume create --opt o=uid=999,gid=999 noteotp-slave-data
+
+pod:
+    podman pod create --name noteotp -p 5432:5432 -p 5433:5433
+
+master:
+    podman run -d -e POSTGRES_PASSWORD=noteotp --pod noteotp \
+        --name noteotp-pgmaster \
+        --health-cmd 'pg_isready -d postgres' \
+        --health-start-period 30s \
+        -v $PWD/postgresql.conf:/etc/postgresql/postgresql.conf:ro \
+        -v $PWD/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro \
+        -v $PWD/master.sh:/docker-entrypoint-initdb.d/master.sh:ro \
+        -v noteotp-slave-data:/slave:Z \
+        docker.io/postgres postgres -p 5432 -c /etc/postgresql/postgresql.conf
+
+slave:
+    podman run -d -e POSTGRES_PASSWORD=noteotp --pod noteotp \
+        --name noteotp-pgslave \
+        --requires noteotp-pgmaster \
+        --health-cmd 'pg_isready -d postgres' \
+        --health-start-period 30s \
+        -v $PWD/postgresql.conf:/etc/postgresql/postgresql.conf:ro \
+        -v $PWD/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro \
+        -v noteotp-slave-data:/var/lib/postgresql/data:Z \
+        docker.io/postgres postgres -p 5433 -c /etc/postgres/postgresql.conf
+
+
+logs-master:
+    podman logs --tail 50 noteotp-pgmaster
+
+logs:
+    podman logs --color --tail 50 --names noteotp-pgmaster noteotp-pgslave
+
+
+all: clean
+    just volume
+    just pod
+    just master
+    sleep 40
+    just slave

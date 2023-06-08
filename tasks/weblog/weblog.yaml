@@ -1,0 +1,30 @@
+category:  web
+points:    200
+title:     Web log
+author:    purplesyringa
+depends_on: [or, ucucugakb, schememe, monitoring]
+track:     chaotic
+description: |
+  <pre><code>
+  [2014-04-03 10:00:32] x: привет ну что посмотрел?)
+
+  [2014-04-03 10:03:02] y: Привет некогда было начальство подгоняет. Кафедру губкина закрылиприкинь?! Такими темпами останутся только эти УУшники которые занимаются непонятно-чем x)
+
+  [2014-04-03 10:04:10] x: печально. посмотри пожалуйста мой блог я скоро публиковать там статью нашу буду))
+  </code></pre>
+  <p>
+    <small>В этой задаче у каждой команды своя база данных.</small>
+  </p>
+  <form method="POST" action="https://weblog.{{hostname}}/{{token}}/__reset_db__">
+    <button>Сбросить базу данных</button>
+  </form>
+generator: ../_scripts/kyzylborda-lib-generator
+daemon:
+  exec: kyzylborda-docker-compose-daemon
+  cwd: .
+  socket: ./app.sock
+  socket_type: http
+secrets:
+  seed: wnoWRGzY+uXeACs5STQffRTGmUqLZL1S
+  flag: ugra_cross_site_scripting_is_heavier_than_you_think_[a-z0-9]{12}
+  admin: "[a-z0-9]{16}"

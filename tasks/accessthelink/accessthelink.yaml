@@ -1,0 +1,29 @@
+category: misc
+points: 100
+track: lawful
+title: Режим доступа
+author: purplesyringa
+description: |
+  <pre><code>
+  From: mikhailov.n.v@[...]
+  To: [...]
+  Subject: Проблема
+
+  Коллега!
+
+  Не могу зайти на ресурс. Висит загрузка.
+
+  С уважением,
+  старший научный сотрудник
+  УУ УНИИУ (ГУ),
+  к. ф.-м. н. [...]
+  </code></pre>
+generator: ../_scripts/kyzylborda-lib-generator
+urls:
+  - http://ugra46rnxwrzsgsbzml42rbbpjvflg3nslddw3p67ylkr7rs6zzuqsyd.onion/{token}/
+daemon:
+  exec: kyzylborda-docker-compose-daemon
+  cwd: app
+secrets:
+  seed: rVj6vf1WLjal/FeRLGrzDIM3r3Nxpr+T
+  flag: ugra_that_was_easy_[a-z0-9]{12}

@@ -1,0 +1,22 @@
+category: stegano
+points:   200
+title:    Но не взбалтывать
+author:   enhydra
+depends_on: [or, sayinggoes, errorcollection]
+track:    neutral
+description: |
+  <pre>
+  Доктор Б[...], я вас как Б[...] Б[...] прошу, вы же доктор очень подходящей специальности,
+  вы ведь привыкли такое разглядывать и что-то там видеть. Посмотрите на них, пожалуйста?
+
+  Возможно, они как-то связаны, и надо их сразу [...]
+
+  [...]
+
+  С уважением,
+  Игорь тоже Б[...]
+  </pre>
+generator: ../_scripts/kyzylborda-lib-generator
+secrets:
+  seed: xaileeNaerieloube2aith8veing1ocheeyuephoZa8w
+  flag: ugra_are_you_tired_of_fiddling_things_yet_[a-z0-9]{16}

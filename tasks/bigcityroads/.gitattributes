@@ -1,0 +1,4 @@
+writeup/pic1.jpg filter=lfs diff=lfs merge=lfs -text
+writeup/pic2.jpg filter=lfs diff=lfs merge=lfs -text
+writeup/gas.jpg filter=lfs diff=lfs merge=lfs -text
+writeup/yandex.png filter=lfs diff=lfs merge=lfs -text

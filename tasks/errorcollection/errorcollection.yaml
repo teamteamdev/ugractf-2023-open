@@ -1,0 +1,20 @@
+category: forensics
+points:   150
+title:    Коллекция ошибок
+depends_on: deepend
+author:   astrra
+track:    neutral
+description: |
+  <pre>Нет, коллега, вы только посмотрите! И где же эта ваша хвалёная помехоустойчивость!?
+  Стоит лишь [...] если составляет всего один бит, то наши потери в информации сразу становятся
+  гораздо сильнее!
+
+  Надо что-то с этим делать. Срочно. Это приказ.
+
+  С уважением,
+  Бегунов
+  </pre>
+generator: ../_scripts/kyzylborda-lib-generator
+secrets:
+  seed: thisIsAstrasSecretSuperSeefalkjvnasodjfvsdfg
+  flag: ugra_noooo_my_pixels_collection_[a-z0-9]{16}

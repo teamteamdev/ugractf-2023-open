@@ -1,0 +1,22 @@
+category: web
+title:    Схемы и мемы
+points:   100
+author:   baksist
+track:    chaotic
+description: >
+  <p>МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ РОССИЙСКОЙ ФЕДЕРАЦИИ</p>
+  <p>УРАЛЬСКИЙ НАУЧНО-ИССЛЕДОВАТЕЛЬСКИЙ ИНСТИТУТ УЦУЦУГИ</p>
+  <p>КАФЕДРА УЧЕНИЯ УЦУЦУГИ</p>
+  <p>ИЗ ПРОТОКОЛА ИСПЫТАНИЙ 2014/4А (продолжение):</p>
+  <p>Фактор стимулирования явления конфлугурирования человеческой памяти может быть увеличен за счёт генератора нейровирусных примитивов II и III типа (см. отчёт 2013/УУ/54). Был разработан прототип генератора стимулов и увеличения фактора.</p>
+  <p>Испытуемые отметили [...], прилив сил и [...].</p>
+  {{reboot_machine}}
+generator: ../_scripts/kyzylborda-lib-generator
+daemon:
+  exec: ../_scripts/kyzylborda-lib-quarantine-daemon Dockerfile.controller app
+  cwd: .
+  socket: ./app.sock
+  socket_type: http
+secrets:
+  seed: YjFlNzg3MGMtZmRlOC00NzRmLWI4NTAt
+  flag: ugra_memes_are_also_external_entities_[a-z0-9]{12}

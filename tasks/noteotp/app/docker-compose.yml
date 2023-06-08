@@ -1,0 +1,63 @@
+version: '3.4'
+
+services:
+  pgmaster:
+    image: docker.io/postgres
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    environment:
+      POSTGRES_PASSWORD: noteotp
+    volumes:
+      - ./master.sh:/docker-entrypoint-initdb.d/master.sh:ro
+      - ./postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+      - master:/var/lib/postgresql/data
+      - slave:/slave
+    healthcheck:
+      test: 'pg_isready -d postgres -p 5432 -U postgres'
+      interval: 15s
+      timeout: 60s
+      retries: 5
+      start_period: 30s
+  pgslave:
+    image: docker.io/postgres
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf -p 5433
+    environment:
+      POSTGRES_PASSWORD: noteotp
+    volumes:
+      - ./postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+      - slave:/var/lib/postgresql/data
+    healthcheck:
+      test: 'pg_isready -d postgres -p 5433 -U postgres'
+      interval: 15s
+      timeout: 60s
+      retries: 5
+      start_period:  20s
+    depends_on:
+      pgmaster:
+        condition: service_healthy
+  noteotp:
+    build: .
+    user: "${DOCKER_USER}"
+    environment:
+    - TASK_NAME
+    - HOST=/tmp/app.sock
+    - MASTER_URL=postgresql://postgres:noteotp@pgmaster:5432/postgres
+    - REPLICA_URL=postgresql://postgres:noteotp@pgslave:5433/postgres
+    volumes:
+    - "../:/task:ro"
+    - "${TMPDIR}:/tmp"
+    - "${STATEDIR}:/state"
+    depends_on:
+      pgmaster:
+        condition: service_healthy
+      pgslave:
+        condition: service_healthy
+
+networks:
+  default:
+    internal: true
+
+volumes:
+  master:
+  slave:

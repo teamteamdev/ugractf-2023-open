@@ -1,0 +1,16 @@
+category: forensics
+points:   150
+title:    Разобрезать
+author:   enhydra
+track:    lawful
+depends_on: accessthelink
+description: |
+  <pre>В этой точке проводились испытания на хахаметре и гальванических измерениях
+  флуктуации уцуцуги в сознании и среде (ГИФУСС).
+
+  Исследования были прекращены в [...] в связи с высоким риском образования [...]
+  над Югорском и [...] (Омская обл.).</pre>
+generator: ../_scripts/kyzylborda-lib-generator
+secrets:
+  seed: chahyee5jooR5yechengiDohca6ugev1joot4eef8qua
+  flag: ugra_here_it_is_on_that_lovely_map_[a-z0-9]{16}

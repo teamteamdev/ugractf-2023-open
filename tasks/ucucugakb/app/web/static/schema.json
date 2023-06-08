@@ -1,0 +1,84 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "UcucugaKB",
+      "description": "Программный интерфейсы Базы знаний Уцуцуги",
+      "license": {
+        "name": "УНИИИУ"
+      }
+    },
+    "basePath": "/api",
+    "schemes": [
+      "https"
+    ],
+    "paths": {
+      "/get-ucucuga": {
+        "get": {
+          "description": "Получение информации об Уцуцуге",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Список удовлетворяющих фильтровке Уцуцуг",
+              "schema": {
+                "type": "array"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "query",
+              "description": "текстовое поле для поиска по названию Уцуцуги",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+                "name": "category",
+                "description": "текстовое значение для фильтровки по типу Уцуцуги. Поддерживает множественный выбор",
+                "items": {
+                  "type": "string"
+                }
+            },
+            {
+                "name": "author",
+                "description": "текстовое значение для фильтровки по создателю Уцуцуги. Поддерживает множественный выбор",
+                "items": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "min-points",
+                "description": "числовое значение для фильтровки по минимальной стоимости (0) Уцуцуги",
+                "items": {
+                    "type": "integer"
+                }
+            },
+            {
+                "name": "max-points",
+                "description": "числовое значение для фильтровки по максимальной стоимости (500) Уцуцуги",
+                "items": {
+                    "type": "integer"
+                }
+            },
+            {
+                "name": "event",
+                "description": "текстовое значение для фильтровки по месту возникновения Уцуцуги. Поддерживает множественный выбор",
+                "items": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "show-flag",
+                "description": "логическое значение для включения отображения уникальных идентификаторов Уцуцуги (УИУ)",
+                "items": {
+                    "type": "boolean"
+                }
+            }
+          ]
+        }
+      }
+    }
+  }

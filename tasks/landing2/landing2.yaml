@@ -1,0 +1,26 @@
+category:  web
+points:    400
+title:     Landing 2
+author:    purplesyringa
+track:     chaotic
+description: |
+  <pre><code>
+  From: [...]@hacker-m[...]
+  To: [...]@hacker-m[...], [...]@hacker-m[...], [...]@hacker-m[...], [...]@hacker-m[...], [...]@hacker-m[...], [...]@hacker-m[...]
+  Subject: Re: Re: ЧЕРНАЯ ДЫРА
+
+  > [...] Выполнение программы УУ УНИИИУ открывает пугающие перспективы для нас и для жителей Омска. Надо что-то предпринять.
+
+  Надо.
+
+  Б. Н.
+  </code></pre>
+
+  <p><em>Опубликовано 5 июня в 19:55</em>:
+  В этом задании нужно зайти из-под пользователя <code>editor</code>.
+bullets:
+  - 'Основное зеркало сайта института: <a href="https://uniiiu.mooo.com/{{token}}">uniiiu.mooo.com</a>'
+generator: ../_scripts/kyzylborda-lib-generator
+secrets:
+  seed: TxVEMUEo4SqI+kpLhL82c5ECgMxuVD3I
+  editor_password: ugra_thats_just_a_warmup_[a-z0-9]{12}

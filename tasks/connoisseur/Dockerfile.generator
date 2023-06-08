@@ -1,0 +1,15 @@
+FROM imachug/kyzylborda_lib:latest
+
+RUN apk add --update inkscape xvfb
+
+RUN mkdir /tmp/fontcache
+RUN chmod 777 /tmp/fontcache
+
+RUN mkdir /.config
+RUN chmod 777 /.config
+
+RUN mkdir /.local
+RUN chmod 777 /.local
+
+WORKDIR /task
+ENTRYPOINT ["kyzylborda-generate", "generator"]

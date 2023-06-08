@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Проект О</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <main>
+    <p>Вы {{ user }}. <a href="logout">Выйти</a></p>
+    
+    <h1>Проект О</h1>
+    <p>График уцуцуги на 2023/04/03:</p>
+    {% if user != "admin" %}
+    <p style="color: red;">Недоступно (нужен уровень «Зритель»).</p>
+    {% else %}
+    <div>
+        <canvas id="myChart"></canvas>
+      </div>
+      
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+      <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Омск', 'Югорск', 'Екатеринбург', 'Москва', 'Лондон', 'Сантьяго'],
+            datasets: [{
+              label: 'Уц/кБ²',
+              data: [1752, 2120, 972, 62, 15, 19],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+    {% endif %}      
+
+    <h1>Действия</h1>
+    <p>
+        <button id="stop">Ключ для обслуживания датчиков</button>
+    </p>
+    <hr/>
+
+    <p>Copyright &copy; УНИИИУ 1962–2044</p>
+    </main>
+
+    {% if user == "admin" %}
+    <script>
+        document.querySelector("#stop").addEventListener("click", () => alert("{{ flag }}"));
+    </script>
+    {% else %}
+    <script>
+        document.querySelector("#stop").addEventListener("click", () => alert("Нужны административные права!"));
+    </script>
+    {% endif %}
+
+</body>
+</html>

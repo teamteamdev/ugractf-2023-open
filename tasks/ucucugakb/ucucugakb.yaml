@@ -1,0 +1,16 @@
+category: web
+title:    UcucugaKB
+points:   100
+track:    chaotic
+author:   baksist
+description: >
+  <pre><code>From: [...]<br>To: [...]<br>Subject: [...]<br><br><p>Отвалилось [...] в [...] можешь посмотреть [...]  пока я дежурю? Спасибо.</p><br><br><p>Б.</p></code></pre>
+generator: ../_scripts/kyzylborda-lib-generator
+daemon:
+  exec: kyzylborda-docker-compose-daemon
+  cwd: app
+  socket: ./app.sock
+  socket_type: http
+secrets:
+  seed: N2ZmNTFhOWQtNjMzMC00NTg5LWI5OTYt
+  flag: ugra_please_study_the_documentation_[a-z0-9]{12}

@@ -1,0 +1,81 @@
+<head>
+    <style>
+        body {
+            background: url("/static/IMG_20220407_130738_bl.jpg");
+            background-size: cover;
+            background-position: center;
+            background-color: #333;
+            color: white;
+            font-family: Verdana, Helvetica, 'PT Sans', sans-serif;
+            text-align: center;
+        }
+        img {
+            max-height: 55vh; 
+        }
+        a {
+            color: white;
+        }
+        input {
+            font: inherit;
+        }
+        h1 {
+            font-weight: normal;
+            font-size: 300%;
+            margin: 2em 0 0.25em;
+        }
+        h1.error {
+            text-shadow: 0px 0px 8px red;
+        }
+        h1.correct {
+            text-shadow: 0px 0px 8px green;
+        }
+        .attempts {
+            text-shadow: 0px 0px 3px black;
+            white-space: nowrap;
+        }
+    </style>
+<body>
+    {% if flag %}
+        <h1 class="correct">Правильно!</h1>
+        <p>Вот, держите.
+        <p><tt>{{ flag }}</tt>
+        <p><a href="">Назад</a>
+    {% elif error %}
+        {% if error == "presentation" %}
+            <h1 class="error">Что-то не так</h1>
+            <p>Неверный формат ввода. Попытка не была потрачена.
+        {% elif error == "wrong-point" %}
+            <h1 class="error">Потрачено</h1>
+            <p>Эти координаты неверны.
+            <p>Была потрачена {% if attempts == 0 %}<strong>последняя попытка</strong>. Сожалеем.{% else %}одна из попыток.{% endif %}
+        {% elif error == "attempts" %}
+            <h1 class="error">Потрачено (полностью)</h1>
+            <p>Попыток больше нет и не будет. Порешайте что-нибудь ещё.
+        {% endif %}
+        {% if attempts %}
+            <p class="back"><a href="">Назад</a>
+        {% endif %}
+    {% else %}
+        <p style="white-space: pre; text-align: right">
+На этом перекрестке светофор стоит,
+Шесть секунд до зелёного сигнала.
+Его красный глаз, как звезда, горит,
+Управляет течением, хаоса не допускает.
+
+Но время бежит, цифра уменьшается,
+Судьба пешехода в этих числах замерзает.
+Шесть, пять, четыре... Сердце замирает,
+На светофоре миг — и жизнь продолжается.</p>
+        <a href="/static/IMG_20220407_130738.jpg"><img src="/static/IMG_20220407_130738_25.jpg"></a>
+        <p>Где же, где же, где же</p>
+        <p><strong>столб этого светофора</strong>?</p>
+        <p>Не перепутайте широту и долготу. Допускается погрешность в пределах 15 метров.</p>
+        <form method="post" action="">
+            <input name="lat" placeholder="Широта">
+            <input name="lon" placeholder="Долгота">
+            <input type="submit" value="Проверить">
+        ⋅
+        Попытки:
+        <span class="attempts">{% for i in range(0, attempts) %}⬤{% endfor %}{% for i in range(attempts, 10) %}◯{% endfor %}</span>
+        </form>
+    {% endif %}

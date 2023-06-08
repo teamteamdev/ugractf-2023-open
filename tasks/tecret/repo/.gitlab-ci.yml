@@ -1,0 +1,14 @@
+build:
+  image: golang:alpine
+  script:
+  - go build -o app .
+  artifacts:
+    paths:
+    - app
+
+test:
+  image: golang:alpine
+  script:
+  - export SHRON_USER=$GITLAB_USER_LOGIN
+  - go test .
+

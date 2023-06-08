@@ -1,0 +1,27 @@
+category: crypto
+points:   200
+title:    Просто скажи
+author:   enhydra
+depends_on: [or, scanline, ucucugakb, summerspent]
+track:    neutral
+description: |
+  <pre>МИНИСТЕРСТВО ОБРАЗОВАНИЯ СССР
+
+  УРАЛЬСКИЙ НАУЧНО-ИССЛЕДОВАТЕЛЬСКИЙ ИНСТИТУТ КОММУНИСТИЧЕСКОЙ КИБЕРНЕТИКИ
+
+  КАФЕДРА CTF-ФИЗИОЛОГИИ
+
+  ПРАКТИЧЕСКИЙ ОТЧЁТ
+
+  «О связи языка-органа и языка-системы»
+
+  [...] Югорский засвет в квадратных угорах, через которые можно выразить [...] измеряется в галлюцинтах.
+  Галлюцинт (Гл): Единица измерения уровня искажений визуальных и аудиальных элементов уцуцуги.
+
+  [...]
+
+  Явление уцуцугообразного нелинейного преобразования отчётливо проявляется на уровне 43 ЮЗ/Гл.</pre>
+generator: ../_scripts/kyzylborda-lib-generator
+secrets:
+  seed: shaifahwi5iojah1aey7aiGeid3liwi4neyohziozen4
+  flag: ugra_though_through_tough_thorough_thought_[a-f0-9]{16}

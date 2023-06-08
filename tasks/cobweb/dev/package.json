@@ -1,0 +1,18 @@
+{
+  "name": "cobweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "run": "browserify main.js -p tinyify -o ../app/static/ani.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ani-cursor": "0.0.5",
+    "browserify": "^17.0.0"
+  },
+  "devDependencies": {
+    "tinyify": "^4.0.0"
+  }
+}

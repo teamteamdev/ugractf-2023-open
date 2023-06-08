@@ -1,0 +1,29 @@
+category: ppc
+points:   200
+title:    Войти и не пострадать
+author:   enhydra
+depends_on: [or, ucucugakb, landing, monitoring]
+track:    chaotic
+description: |
+  <pre>МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ РОССИЙСКОЙ ФЕДЕРАЦИИ
+
+  УРАЛЬСКИЙ НАУЧНО-ИССЛЕДОВАТЕЛЬСКИЙ ИНСТИТУТ УЦУЦУГИ
+
+  КАФЕДРА УЧЕНИЯ УЦУЦУГИ
+
+  ИЗ ПРОТОКОЛА ИСПЫТАНИЙ 2014/4А (заключение):
+
+  В результате коррекции временного фактора количественными методами эвристики на осовании
+  эксперимента 95392, 95399 произошло увеличение безопасности. Сотрудники планируют определить
+  меры измерения увеличения в ближайшие сроки в рамках текущего гранта. Это гарантия, что
+  будет обеспечено повышение безопасности работы в [...]</pre>
+generator: ../_scripts/kyzylborda-lib-generator
+daemon:
+  exec: kyzylborda-docker-compose-daemon
+  cwd: app
+  socket: ./app.sock
+  socket_type: http
+secrets:
+  seed: shaigheirooMohthe2Taht6aing9eegeingee0Aing2f
+  flag: ugra_keep_calm_we_will_sit_down_together_[a-z0-9]{16}
+  otp: "[4-7][0-9]{4}"

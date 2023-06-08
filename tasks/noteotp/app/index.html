@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>NoteOTP</title>
+
+    <style>
+      main {
+        width: 100%;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      #sync {
+        border: 2px solid;
+        padding: 5px;
+        margin: 5px;
+      }
+
+      form {
+        margin: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-items: stretch;
+        gap: 3px;
+      }
+
+      textarea {
+        resize: none;
+        height: 300px;
+      }
+
+      #get {
+        padding: 5px;
+        margin: 5px;
+        float: left;
+      }
+
+      #set {
+        padding: 5px;
+        margin: 5px;
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h4>Sync events</h4>
+      <div id="sync"></div>
+
+      <h4>Manage notes</h4>
+      <form>
+        <div>Your one-time password:</div>
+        <input id="password" placeholder="Password" type="password" />
+        <p style=" margin-top: 0;font-size: 0.8em;">Upon successful request, your new one-time will be updated here. Do not lose it!</p>
+        <div>Note ID:</div>
+        <input id="id" placeholder="Note ID" />
+        <div>
+          <button id="get">Get note</button>
+        </div>
+        <textarea id="contents" placeholder="Type your note here or click “Get note” to fetch note content from our database"></textarea>
+        <div>
+          <button id="set">Save note</button>
+        </div>
+      </form>
+    </main>
+
+    <script>
+      const ecnt = document.getElementById('contents')
+      const epwd = document.getElementById('password')
+      const eid = document.getElementById('id')
+      const eset = document.getElementById('set')
+      const eget = document.getElementById('get')
+      const user = /^\/([a-zA-Z0-9.]+)\/?$/.exec(window.location.pathname)[1]
+
+      eset.addEventListener('click', async e => {
+        e.preventDefault()
+
+        const formData = new FormData()
+        formData.append('contents', ecnt.value)
+        const url = `/${user}/${eid.value}/`
+        const headers = new Headers()
+        headers.set('Authorization', 'Basic ' + btoa(user + ':' + epwd.value))
+        const resp = await fetch(url, {
+          method: 'POST',
+          body: formData,
+          headers: headers,
+        })
+        if (resp.status !== 200) {
+          alert(`Error ${resp.status}\n\n${await resp.text()}`)
+          return
+        }
+        const value = await resp.json()
+        ecnt.value = value.contents
+        epwd.value = value.new_password
+      })
+
+      eget.addEventListener('click', async e => {
+        e.preventDefault()
+
+        const url = `/${user}/${eid.value}/`
+        const headers = new Headers()
+        headers.set('Authorization', 'Basic ' + btoa(user + ':' + epwd.value))
+        const resp = await fetch(url, {
+          method: 'GET',
+          headers: headers,
+        })
+        if (resp.status !== 200) {
+          alert(`Error ${resp.status}\n\n${await resp.text()}`)
+          return
+        }
+        const value = await resp.json()
+        ecnt.value = value.contents
+        epwd.value = value.new_password
+      })
+
+      window.addEventListener('load', () => {
+        const esync = document.getElementById('sync')
+        const url = `/sync/${user}/`
+        fetch(url).then(resp => {
+          const reader = resp.body.getReader()
+          return new Promise((resolve, reject) => {
+            function readProgress() {
+              reader
+                .read()
+                .catch(reject)
+                .then(({ done, value }) => {
+                  if (done) {
+                    resolve()
+                  }
+
+                  if (!value) {
+                    return
+                  }
+
+                  const decoder = new TextDecoder('utf-8')
+                  esync.innerText += decoder.decode(value)
+
+                  setTimeout(readProgress, 50)
+                })
+            }
+
+            readProgress()
+          })
+        })
+      })
+    </script>
+  </body>
+</html>

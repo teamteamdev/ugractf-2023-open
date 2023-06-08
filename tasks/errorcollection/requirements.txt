@@ -1,0 +1,4 @@
+pillow
+qrcode
+zbarlight
+numpy

@@ -1,0 +1,69 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0 auto;
+	max-width: 800px;
+	font-family: "Verdana", "Arial", sans-serif;
+	font-size: 16px;
+}
+
+.logged-in {
+	margin: 16px 0 32px;
+}
+.login-form {
+	display: flex;
+	flex-direction: row;
+	margin: 16px -8px 32px;
+}
+.login-form input {
+	flex: 1 1 0;
+	margin: 0 8px;
+}
+
+article {
+	border-bottom: 1px solid #aaa;
+	padding-bottom: 32px;
+	margin-bottom: 32px;
+}
+
+h2 {
+	margin: 0;
+}
+.author {
+	margin-bottom: 16px;
+}
+
+article .raw-input, article textarea {
+	font: inherit;
+	width: 100%;
+	background-color: transparent;
+}
+article .raw-input {
+	padding: 0;
+	border: none;
+}
+article textarea {
+	margin-bottom: 16px;
+	padding: 8px;
+	border: 1px solid #aaa;
+	resize: vertical;
+}
+
+article .author {
+	display: flex;
+	flex-direction: row;
+}
+article .author b {
+	flex: 1 1 0;
+}
+article .author a {
+	margin-left: 8px;
+}
+
+article .publish {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}

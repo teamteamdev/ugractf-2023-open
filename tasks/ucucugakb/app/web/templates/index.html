@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UcucugaKB</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+    <script src="{{url_for('static', filename='formHandler.js')}}"></script>
+</head>
+<body>
+    <header>
+        <h1>UcucugaKB - База знаний Уцуцуги</h1>
+    </header>
+    <form action="javascript:;" onsubmit="getUcucuga(this)">
+        <fieldset>
+            <legend>Поиск по названию Уцуцуги</legend>
+            <input type="text" name="query" placeholder="trisection">
+        </fieldset>
+        <fieldset>
+            <legend>Тип Уцуцуги</legend>
+            <input name="category" type="checkbox" value="web">Веб-технологии
+            <input name="category" type="checkbox" value="crypto">Шифрование
+            <input name="category" type="checkbox" value="ppc">Программирование<br>
+            <input name="category" type="checkbox" value="osint">Разведка
+            <input name="category" type="checkbox" value="forensics">Криминалистика
+            <input name="category" type="checkbox" value="reverse">Обратная разработка<br>
+            <input name="category" type="checkbox" value="stegano">Тайнопись
+            <input name="category" type="checkbox" value="pwn">Захват
+            <input name="category" type="checkbox" value="ctb">Взлом коробки<br>
+            <input name="category" type="checkbox" value="misc">Разное
+            <input name="category" type="checkbox" value="joy">Развлечения
+        </fieldset>
+        <fieldset>
+            <legend>Создатель Уцуцуги</legend>
+            <input name="author" type="checkbox" value="nsychev">nsychev
+            <input name="author" type="checkbox" value="kalan">kalan
+            <input name="author" type="checkbox" value="ksixty">ksixty
+            <input name="author" type="checkbox" value="abbradar">abbradar<br>
+            <input name="author" type="checkbox" value="javach">javach
+            <input name="author" type="checkbox" value="purplesyringa">purplesyringa
+            <input name="author" type="checkbox" value="baksist">baksist
+            <input name="author" type="checkbox" value="rozetkin">rozetkin<br>
+            <input name="author" type="checkbox" value="gudn">gudn
+            <input name="author" type="checkbox" value="astrra">astrra
+        </fieldset>
+        <fieldset>
+            <legend>Стоимость Уцуцуги</legend>
+            <label for="min-points">Минимум</label>
+            <input name="min-points" list="values" type="range" min="0" max="500" value="0" step="25">
+            <label for="max-points">Максимум</label>
+            <input name="max-points" list="values" type="range" min="0" max="500" value="500" step="25">
+            
+            <datalist id="values">
+                <option value="0" label="0"></option>
+                <option value="100" label="100"></option>
+                <option value="200" label="200"></option>
+                <option value="300" label="300"></option>
+                <option value="400" label="400"></option>
+                <option value="500" label="500"></option>
+            </datalist>
+        </fieldset>
+        <fieldset>
+            <legend>Место возникновения Уцуцуги</legend>
+            <input name="event" type="checkbox" value="ugractf-2020-quals">UgraCTF 2020 Quals
+            <input name="event" type="checkbox" value="ugractf-2020-school">UgraCTF 2020 School
+            <input name="event" type="checkbox" value="ugractf-2021-quals">UgraCTF 2021 Quals<br>
+            <input name="event" type="checkbox" value="ugractf-2021-school">UgraCTF 2021 School
+            <input name="event" type="checkbox" value="ugractf-2022-quals">UgraCTF 2022 Quals
+            <input name="event" type="checkbox" value="ugractf-2022-school">UgraCTF 2022 School<br>
+            <input name="event" type="checkbox" value="ugractf-2023-quals">UgraCTF 2023 Quals
+            <input name="event" type="checkbox" value="ugractf-2023-school">UgraCTF 2023 School
+            <!-- <input name="event" type="checkbox" value="ugractf-2023-open">UgraCTF 2023 Open -->
+        </fieldset>
+        <p id="error_message"></p>
+        <input type="submit" value="Найти Уцуцугу"/>
+        <input type="reset" value="Очистить фильтровку">
+    </form>
+    <div id="result-table"></div>
+    <footer>
+        &copy; 2023 УНИИИУ. Все права защищены.
+        <img src="{{url_for('static', filename='valid.png')}}">
+    </footer>
+</body>
+</html>

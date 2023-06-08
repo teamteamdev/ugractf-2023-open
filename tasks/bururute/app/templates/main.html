@@ -1,0 +1,85 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background: #e4ecfd;
+            font-family: 'Geologica', sans-serif;
+        }
+        form, #success {
+            background: white;
+            padding: 2em 3em;
+            box-shadow: 0 24px 48px rgba(230,235,245,.4);
+            margin: 4em auto;
+            width: 15em;
+            border-radius: 3em;
+        }
+        #success {
+            width: 30em;
+        }
+        label {
+            display: block;
+            margin: 2em 0 1em;
+            font: inherit;
+        }
+        input {
+            display: block;
+            width: 100%;
+            border: none;
+            box-shadow: 0 0px 10px rgba(0, 0, 0, .05);
+            padding: 0.5em 0.5em;
+            margin: 0 0 3em;
+            font: inherit;
+            border-radius: 10px;
+        }
+        #otp {
+            font-size: 300%;
+            letter-spacing: 0.2em;
+            padding: 0.17em;
+            margin: 0 0 1em;
+        }
+        .blocked {
+            border: 1px solid red;
+            padding: 1em;
+            margin: 1em auto;
+            width: 30em;
+            background: #FAA;
+            border-radius: 10px;
+        }
+        .result {
+            padding: 1em;
+            box-shadow: 0 0px 10px rgba(255, 0, 0, .25);
+            margin: 0 0 2em;
+            background: #FDD;
+            border-radius: 10px;
+        }
+    </style>
+<body>
+    {% if flag %}
+        <div id="success">
+            <p>Добро пожаловать в систему.<p><tt>{{ flag }}</tt>
+        </div>
+    {% else %}
+        {% if blocked %}
+            <div class="blocked">Ваш IP-адрес ({{ ip }}) заблокирован за превышение количества попыток ввода одноразового пароля.</div>
+        {% endif %}
+        <form method="post" action="">
+            <label for="user">Имя пользователя</label>
+            <input name="user" value="admin" disabled="disabled">
+            <label for="password">Пароль</label>
+            <input name="password" type="password" value="$K0ZLAdoev$" disabled="disabled">
+            <label for="otp">Одноразовый код (5 цифр)</label>
+            <input id="otp" name="otp" maxlength="5" value="">
+            {% if blocked %}
+                <div class="result">Ваш IP-адрес заблокирован.</div>
+            {% elif not format_ok %}
+                <div class="result">Неверный формат: одноразовый код состоит из пяти цифр.</div>
+            {% elif not otp_ok %}
+                <div class="result">Одноразовый код введён неверно.</div>
+            {% endif %}
+            <input type="submit" value="Войти">
+        </form>
+    {% endif %}
+    <script>window.onload = () => {document.getElementById("otp").focus()}</script>
+<!-- Your IP address: {{ ip }} -->

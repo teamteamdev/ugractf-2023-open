@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Weblog</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+	</head>
+	<body>
+		{% if authorized_login %}
+			<div class="logged-in">
+				You are logged in as <b>{{ authorized_login }}</b>.
+			</div>
+		{% else %}
+			<form action="login" method="POST" class="login-form">
+				<input type="text" name="login" placeholder="Login" />
+				<input type="password" name="password" placeholder="Password" />
+				<input type="submit" value="Login" />
+			</form>
+		{% endif %}
+
+		<form action="publish" method="POST">
+			<article>
+				<h2><input placeholder="Title" name="title" class="raw-input" /></h2>
+				<div class="author">
+					<span>by&nbsp;</span>
+					<b><input placeholder="Author" name="author" class="raw-input" /></b>
+				</div>
+				<textarea placeholder="Content (basic HTML supported)" name="content"></textarea>
+				<div class="publish">
+					<div>
+						<input type="checkbox" name="authorized_only" id="authorized_only" />
+						<label for="authorized_only">Only show this post to authorized users</label>
+					</div>
+					<input type="submit" value="Publish" />
+				</div>
+			</article>
+		</form>
+
+		{% for blog in blogs %}
+			<article>
+				<h2>{{ blog.title }}</h2>
+				<div class="author">
+					<span>by&nbsp;</span>
+					<b>{{ blog.author }}</b>
+					<a href="report/{{ blog.id }}">report</a>
+					<a href="embed/{{ blog.id }}">embed</a>
+				</div>
+				<div class="content">
+					{% if blog.authorized_only and authorized_login is none %}
+						<i>This post is only visible to authorized users.</i>
+					{% else %}
+						{{ blog.content|safe }}
+					{% endif %}
+				</div>
+			</article>
+		{% endfor %}
+	</body>
+</html>

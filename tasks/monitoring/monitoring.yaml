@@ -1,0 +1,25 @@
+category: web
+title:    Мониторинг
+points:   50
+track:    lawful
+author:   baksist
+description: >
+  <p>П Р Е С С - Р Е Л И З</p>
+  <p><i>2 июня 2023, г. Югорск, Югра</i></p><br>
+  <p>Уважаемые партнёры Уральского научно-исследовательского института уцуцуги! К 61-летию института был разработан сервис для даылфвоадлжйфукоадлжыво.</p><br>
+  <p>ждывалжэфцщ</p>
+  <p>алыждвалфыва</p>
+  <p>фылжвдал90й34шк5ла90з2й3гшокк</p>
+  <p>ц34свай</p>
+  <p>овгшощдл84кегшощ4кува5ешщзжкуваеЫшлщдгофуйц</p>
+  <p>ф4ку5шощыкуве45щгшждо</p><br>
+  <p>Благодарим за сотрудничество и содействие в проведении экспериментов УУ УНИИИУ!</p>
+generator: ../_scripts/kyzylborda-lib-generator
+daemon:
+  exec: kyzylborda-docker-compose-daemon
+  cwd: app
+  socket: ./app.sock
+  socket_type: http
+secrets:
+  seed: NDAwNTQ5ZmQtMmFkOS00YjM3LTkwYjIt
+  flag: ugra_demonstrate_but_validate_[a-z0-9]{12}

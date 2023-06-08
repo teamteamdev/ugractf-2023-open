@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ blog.title }} | Weblog</title>
+		<style type="text/css">
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 32px auto;
+				max-width: 800px;
+				font-family: "Verdana", "Arial", sans-serif;
+				font-size: 16px;
+			}
+
+			h2 {
+				margin: 0;
+			}
+			.author {
+				display: flex;
+				flex-direction: row;
+				margin-bottom: 16px;
+			}
+		</style>
+	</head>
+	<body>
+		{% if blog is none %}
+			This blog does not exist.
+		{% else %}
+			<h2>{{ blog.title }}</h2>
+			<div class="author">
+				<span>by&nbsp;</span>
+				<b>{{ blog.author }}</b>
+			</div>
+			<div class="content">
+				{% if blog.authorized_only and authorized_login is none %}
+					<i>This post is only visible to authorized users.</i>
+				{% else %}
+					{{ blog.content|safe }}
+				{% endif %}
+			</div>
+		{% endif %}
+	</body>
+</html>

@@ -1,0 +1,4 @@
+FROM imachug/kyzylborda_lib
+WORKDIR /task/controller
+EXPOSE 51820/udp
+CMD ["kyzylborda-quarantine", "0.0.0.0:51820", "server"]

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="/{{token}}/static/style.css">
+    <script src="/{{token}}/static/formHandler.js"></script>
+</head>
+<body>
+    <header>
+        <h1>МемУцуц</h1>
+    </header>
+    <form>
+        <label for="upper">Текст вверху:</label>
+        <input type="text" id="upper" name="upper"><br><br>
+
+        <label for="bottom">Текст внизу:</label>
+        <input type="text" id="bottom" name="bottom"><br><br>
+        
+        <label for="image">Изображение СВГ:</label>
+        <input type="file" id="image" name="image" accept="image/svg+xml"><br><br>
+        
+        <button type="button" onclick="handleUpload()">Получить МЕМ</button>
+    </form>
+    <div id="memebox">
+        <div id="meme"></div>
+    </div>
+</body>
+</html>

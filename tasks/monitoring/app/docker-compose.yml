@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  web:
+    build: ./web/
+    environment:
+      - TASK_NAME
+    user: "${DOCKER_USER}"
+    volumes:
+      - "./web:/app:ro"
+      - "${TMPDIR}:/tmp"
+      - "${STATEDIR}:/state"
+      - "../:/task:ro"
+    depends_on:
+      - database
+ 
+  database:
+    image: mysql
+    expose:
+      - "3306"
+    environment:
+      LANG: C.UTF_8
+      MYSQL_ROOT_PASSWORD: MzI0M2YyMjItYjQwNS00ZjdjLTllOTYt
+      MYSQL_DATABASE: appdb
+      MYSQL_USER: websvc
+      MYSQL_PASSWORD: MzMwZjgzYjktMjU4NS00YzJhLWI5ODct
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+networks:
+  default:
+    internal: true

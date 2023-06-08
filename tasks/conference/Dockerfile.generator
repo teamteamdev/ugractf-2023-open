@@ -1,0 +1,5 @@
+FROM elixir:1.10-alpine
+
+RUN mix local.hex --force
+COPY generator /root/generator
+RUN cd /root/generator && mix deps.get && mix escript.build

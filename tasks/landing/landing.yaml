@@ -1,0 +1,38 @@
+category:  web
+points:    50
+title:     Landing
+author:    purplesyringa
+track:     chaotic
+description: |
+  <pre><code>
+  МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ РОССИЙСКОЙ ФЕДЕРАЦИИ
+  УРАЛЬСКИЙ НАУЧНО-ИССЛЕДОВАТЕЛЬСКИЙ ИНСТИТУТ УЦУЦУГИ
+  КАФЕДРА УЧЕНИЯ УЦУЦУГИ
+
+  ИЗ ПРОТОКОЛА ИСПЫТАНИЙ 2014/4А:
+
+  [Эксперимент] был признан успешным на основании заключения комиссии КК УНИИУ: обеспечена должная защита объекта испытаний от биологических факторов угрозы на основе изучения базисных явлений интуитивного конфлугурирования человесеской памяти.
+  </code></pre>
+
+  <p><em>Опубликовано 5 июня в 19:55</em>:
+  В этом задании нужно зайти из-под пользователя <code>admin</code>.
+
+  <p>
+    <small>В этой задаче у каждой команды своя база данных.</small>
+  </p>
+  <form method="POST" action="https://landing.{{hostname}}/{{token}}/__reset_db__">
+    <button>Сбросить базу данных</button>
+  </form>
+generator: ../_scripts/kyzylborda-lib-generator
+daemon:
+  exec: kyzylborda-docker-compose-daemon
+  cwd: app
+  socket: ./app.sock
+  socket_type: http
+  http_hostnames:
+    - landing
+    - uniiiu.mooo.com.
+secrets:
+  seed: TxVEMUEo4SqI+kpLhL82c5ECgMxuVD3I
+  editor_password: ugra_thats_just_a_warmup_[a-z0-9]{12}
+  flag: ugra_never_underestimate_human_stupidity_[a-z0-9]{12}

@@ -1,0 +1,3 @@
+socket: 127.0.0.1:51820
+volumes:
+  - /task:/task:ro

@@ -1,0 +1,39 @@
+category: misc
+points: 200
+track: lawful
+title: Только не это…
+depends_on: uncut
+author: purplesyringa
+description: |
+  <pre>
+  [...] У некоторых испытуемых возникает специфическая реакция в области [...]
+  доли головного мозга. Гипотетически связать её с [...] зоной.
+  </pre>
+  <p><em>Опубликовано 5 июня в 00:05:</em>
+  <pre>
+  [...] удалось успешно завершить конфигурирование согласно обнаруженной инструкции.
+  В качестве доказательства прикладываю [...]:
+
+  interface: wg0
+    public key: q/+jwmL5tNuYSB3z+t9Caj00Pc1YQ8zf+uNPu/UE1wE=
+    private key: (hidden)
+    listening port: 51820
+
+  peer: BV5DjXeCugIrjvEZLo4sZ0hN5wveFTH8kOfZ1AIQ5js=
+    allowed ips: 10.0.44.2/32
+
+  peer: VpjKa2MQKXuvttXRwJIe0LLYrtFYGQRTtmt8okUGm3A=
+    allowed ips: 10.0.44.3/32
+
+  Проверьте, всё л[...]
+  </pre>
+generator: ../_scripts/kyzylborda-lib-generator
+bullets:
+  - "IP-адрес сервера: 95.217.155.244"
+  - "Токен: <code>{{token}}</code>"
+daemon:
+  exec: ../_scripts/kyzylborda-lib-quarantine-daemon Dockerfile.controller wireguard
+  cwd: .
+secrets:
+  seed: JTvs1+TWfd1s0PjFMTUuQj7DoPaLz5ML
+  flag: ugra_please_dont_reuse_keys_[a-z0-9]{12}

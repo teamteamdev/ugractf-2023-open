@@ -1,0 +1,25 @@
+category:  ppc
+points:    200
+title:     Обучающие материалы
+author:    purplesyringa
+depends_on: [or, connoisseur, stegopentest, sayinggoes]
+track:     neutral
+description: |
+  <pre><code>
+  [...] Кафедра [...] УУ; компьютерной криминалистики (КК); CTF-физиологии (фактически 1 факультет ФФ); нефтедобычи и перегонки топлива им. Губкина (осн. в 2012, закрыта в 2014, ₽₽); технологий и техники (ТТ). По факту осталась только одна, сами знаете какая. И чем она занимается — тоже.
+
+  Почему-то в 90-х резко перепрофилировали институт и всё засекретили, кроме [...], которое потом тоже засекретили, а потом и [...].
+  </code></pre>
+generator: ../_scripts/kyzylborda-lib-generator
+bullets:
+  - <code>nc deepend.{{hostname}} 5917</code>
+  - "Токен: <code>{{token}}</code>"
+daemon:
+  exec: kyzylborda-docker-compose-daemon
+  cwd: app
+  socket: ./app.sock
+  socket_type: tcp
+  tcp_port: 5917
+secrets:
+  seed: I1sV82nqXA8NK0MnD2GyNYitZnyenqTT
+  flag: ugra_i_am_in_[a-z0-9]{12}

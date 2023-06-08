@@ -1,0 +1,32 @@
+{% if is_authorized %}
+	<div id="messages" style="display: none; position: fixed; left: 16px; top: 80px; background-color: #ffffff; border: 1px solid black; padding: 8px 16px; z-index: 19;">
+		<h3><u><b><i>Л и ч н ы е</i></b></u> сообщения</h3>
+		{% for message in messages %}
+			<div>
+				<b>От {{ message.user_from }}</b>:
+				<blockquote>
+					{{ message.message }}
+				</blockquote>
+			</div>
+		{% endfor %}
+	</div>
+
+	<a style="width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: fixed; left: 16px; top: 16px; font-size: 24px; border: 4px solid #f0c0c0; background-color: #ffffff; color: #f00000; z-index: 19;" href="#" onclick="messages.style.display = messages.style.display === 'none' ? '' : 'none'; return false;"><i class="fa fa-envelope"></i></a>
+{% endif %}
+
+<div id="ctrlEnter" style="display: none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); background-color: #ffffff; padding: 16px; z-index: 20; border: 1px solid black;">
+	<h3>Заметили ошибку?</h3>
+	<span style="display: block; width: 600px;">Наши специалисты не очень хорошо знают русский язык, поэтому, если вы заметили опечатку, пожалуйста, приложите ссылку, по которой написано, как правильно писать.</span>
+	<form action="/{{ token }}/ctrl-enter/" method="POST">
+		<textarea name="text" style="width: 600px; height: 300px; resize: none;"></textarea><br>
+		<input class="loginButton" type="submit" value="Отправить">
+	</form>
+</div>
+
+<script type="text/javascript">
+	document.addEventListener("keypress", e => {
+		if(e.ctrlKey && e.key === "Enter") {
+			ctrlEnter.style.display = "";
+		}
+	});
+</script>

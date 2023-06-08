@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  ssh:
+    build: .
+    environment:
+      - TASK_NAME
+    ports:
+      - 18602:18602
+    volumes:
+      - "./:/app:ro"
+      - "../:/task:ro"

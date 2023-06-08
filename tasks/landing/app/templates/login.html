@@ -1,0 +1,56 @@
+{% if is_authorized %}
+	<div class="sidebox">
+					<div class="sidetitle">
+						<span>Добро пожаловать, {{ login }}</span></div>
+					<div class="inner">
+						<!-- <bc> -->
+	<div id="baseLogForm">
+	<div id="blk549435" style="border:1px solid #CCCCCC;position:absolute;z-index:82;background:url('/static/.s/img/fr/g.gif');display:none;"></div>
+		
+	<table border="0" cellspacing="1" cellpadding="0" width="100%">
+	<tr><td colspan="2"><div style="text-align:center;"><a href="../logout/">Выйти</a></div></td></tr>
+	</table>
+
+	</div></div><!-- </bc> -->
+					</div>
+{% else %}
+	<div class="sidebox">
+					<div class="sidetitle">
+						<span><!-- <bt> --><!--<s5158>-->Вход на сайт<!--</s>--><!-- </bt> --></span></div>
+					<div class="inner">
+						<!-- <bc> -->
+	<div id="baseLogForm">
+	<div id="blk549435" style="border:1px solid #CCCCCC;position:absolute;z-index:82;background:url('/static/.s/img/fr/g.gif');display:none;"></div>
+	<form id="frmLg549435" action="../login/" method="post" style="margin:0">
+		
+
+	<table border="0" cellspacing="1" cellpadding="0" width="100%">
+
+	<tr><td width="20%" nowrap="nowrap">Логин:</td>
+		<td><input class="loginField" type="text" name="login" value="" size="20" style="width:100%;" maxlength="50"/></td></tr>
+	<tr><td>Пароль:</td>
+		<td><input class="loginField" type="password" name="password" size="20" style="width:100%" maxlength="32"/></td></tr>
+		
+	</table>
+	<table border="0" cellspacing="1" cellpadding="0" width="100%">
+	<tr><td nowrap></td>
+		<td align="right" valign="top"><input class="loginButton" name="sbm" type="submit" value="Вход"/></td></tr>
+	<tr><td colspan="2"><div style="text-align:center;"><a href="../register/">Регистрация</a></div></td></tr>
+	</table>
+
+		<input type="hidden" name="a"    value="2" />
+		<input type="hidden" name="ajax" value="1" />
+		<input type="hidden" name="rnd"  value="435" />
+		
+	</form>
+	</div></div><!-- </bc> -->
+					</div>
+{% endif %}
+
+
+	<div class="sidebox">
+					<div class="sidetitle">
+						<span>Сейчас онлайн</span></div>
+					<div class="inner">
+						<span>admin, editor</span>
+				</div>

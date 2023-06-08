@@ -1,0 +1,111 @@
+<head>
+    <style type="text/css">
+        body {
+            background: url('/static/cld50.jpg');
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: black;
+            overflow: hidden;
+            font-size: 30pt;
+            margin: 0;
+        }
+        #welcome {
+            background: black;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            padding: 0.5em;
+            text-align: center;
+            color: white;
+            overflow-y: auto;
+            z-index: 1;
+        }
+        #status {
+            margin-top: 1em;
+            font-size: 150%;
+        }
+        #status a {
+            color: white;
+        }
+        #pigeons {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        #pigeons .pigeon {
+            position: absolute;
+            -webkit-transition: left 4s ease-in-out, top 4s ease-in-out;
+            -moz-transition: left 4s ease-in-out, top 4s ease-in-out;
+            -ms-transition: left 4s ease-in-out, top 4s ease-in-out;
+            -o-transition: left 4s ease-in-out, top 4s ease-in-out;
+            transition: left 4s ease-in-out, top 4s ease-in-out;
+            height: 150px;
+            padding: 0 123px;
+            background: url('/static/wingl.gif') left top no-repeat, url('/static/wingr.gif') right top no-repeat;
+            background-size: contain;
+        }
+    </style>
+    <title>flyover</title>
+<body>
+    <div id="welcome">
+        <p>Предлагаем вам включить фоновую музыку для полного погружения…
+        <p><iframe style="width: 80vh; height: 45vh" src="https://www.youtube.com/embed/IWnta3mg4i8" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+        <p id="status">Ожидайте…
+    </div>
+    <div id="pigeons">
+    </div>
+    <script type="text/javascript">
+        let st = document.getElementById("status");
+
+        let launch = (e) => {
+            document.getElementById("welcome").style.visibility = "hidden";
+            e.preventDefault();
+            return false;
+        };
+
+        let pollingInterval = window.setInterval(() => {
+            st.innerHTML = "Ждите…";
+            fetch("pics")
+                .then(response => {
+                    if (response.status === 201) {
+                        st.innerHTML = "Ожидайте…";   
+                    } else if (response.status === 200) {
+                        window.clearInterval(pollingInterval);
+                        response.json().then(data => {
+                            for (let p of data) {
+                                let img = document.createElement("img");
+                                img.className = "pigeon";
+                                img.src = p;
+                                document.getElementById("pigeons").appendChild(img);
+                            }
+
+                            let a = document.createElement("a");
+                            a.innerHTML = "Начать";
+                            a.href = "#";
+                            a.onclick = launch;
+                            st.innerHTML = "Приятного просмотра!&nbsp;";
+                            st.appendChild(a);
+                        })
+                    } else {
+                        st.innerHTML = `Ошибка ${response.status}, попробуйте позже`;
+                        window.clearInterval(pollingInterval);
+                    }
+                })
+        }, 2000);
+
+        window.setInterval(() => {
+            for (let element of document.querySelectorAll(".pigeon")) {
+                if (Math.random() < 0.04) {
+                    element.style.left = `${Math.random() * 500 - 220}%`;
+                    element.style.top = `${Math.random() * 500 - 220}%`;
+                    element.style.zIndex = `${Math.floor(Math.random() * 1000)}`;
+                }
+            }
+        }, 100);
+    </script>

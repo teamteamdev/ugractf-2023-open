@@ -1,0 +1,11 @@
+category: admin
+points: 200
+title: Сам всё сделаю
+track: lawful
+author: teledne
+depends_on: [or, monitoring, weblog]
+description: |
+  <pre><code>[2023-06-04 19:51:00]
+  x: ПОЧЕМУ НИКТО НЕ ВЫХОДИТ НА СВЯЗЬ?! МЕРОПРИЯТИЕ СКОРО НАЧНЁТСЯ. ГДЕ КЛЮЧИ? САМ ВСЁ СДЕЛАЮ.
+  </code></pre>
+generator: ../_scripts/kyzylborda-lib-generator

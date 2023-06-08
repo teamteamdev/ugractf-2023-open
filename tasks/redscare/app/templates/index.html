@@ -1,0 +1,20 @@
+<HTML>
+<HEAD><TITLE>☭ ☆ ВЛАДИМИР ИЛЬИЧ ЛЕНИН ☆ ☭</TITLE></HEAD>
+<BODY BGCOLOR=RED>
+<CENTER>
+<IMG SRC=/static/background.png>
+<H1><FONT FACE=CURSIVE>ВЛАДИМИР ИЛЬИЧ ЛЕНИН</FONT></H1>
+<H2><FONT COLOR=GREEN>Насколько вы знакомы с работами Ленина?</FONT></H2>
+<H2><FONT COLOR=YELLOW>Вы коммунист на {{ percentage }}%</FONT></H2>
+<H2><FONT COLOR=WHITE>{{ error }}</FONT></H2>
+<FORM ACTION=reply METHOD=POST>
+Ленин писал:<BR><BR>
+<DIV WIDTH=500><FONT COLOR=WHITE>{{ question }}</FONT></DIV><BR>
+Каков ответ на этот вопрос?<BR>
+<INPUT TYPE=HIDDEN NAME=question VALUE="{{ question }}"><BR>
+<TEXTAREA NAME=answer></TEXTAREA><BR>
+<INPUT TYPE=SUBMIT VALUE=Проверить>
+</FORM>
+</CENTER>
+</BODY>
+</HTML>

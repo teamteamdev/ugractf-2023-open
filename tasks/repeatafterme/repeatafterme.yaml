@@ -1,0 +1,27 @@
+category: forensics
+points:   300
+title:    Делай как я
+author:   enhydra
+depends_on: [or, noteotp, weblog, landing2]
+track:    chaotic
+description: |
+  <pre>
+    Сей экземпляр мы обнаружили сегодня ночью. Он попытался замести следы, и похоже,
+    у него [...] оказались безнадёжными, продолжаются изыскания [...] криптографических
+    оракулов древнего мира.
+
+    Подписано:
+    Борисов (но вы, конечно, знаете, кто я на самом деле).
+  </pre>
+  <p><em>Опубликовано 6 июня в 18:15:</em>
+  <pre>[...] Сначала вам будет казаться, что нужно повторить неповторимое.
+  Что же может делать его очень даже повторимым?</pre>
+generator: ../_scripts/kyzylborda-lib-generator
+daemon:
+  exec: kyzylborda-docker-compose-daemon
+  cwd: app
+  socket_type: tcp
+  tcp_port: 18602
+secrets:
+  seed: Ohshooshoowee3Keej3Aidae1to7ki6Uhis8ieph1Oop
+  flag: ugra_conquering_step_by_step_[a-z0-9]{16}

@@ -1,0 +1,30 @@
+category: ucucuga
+points: 0
+title: The End
+author: teamteam
+depends_on:
+  - or
+  - [and, carrier, conference]
+  - [and, carrier, books]
+  - [and, flyover, conference]
+  - [and, flyover, books]
+description: >
+    <pre><code>ОБРАЗЕЦ №009/21 (ПОЛОЖ.)
+
+    СОВЕРШЕННО СЕКРЕТНО
+
+    УРАЛЬСКИЙ НИИ ИССЛЕДОВАНИЯ УЦУЦУГИ
+
+    НЕ ОТКРЫВАТЬ БЕЗ УЧАСТИЯ СПЕЦИАЛИСТОВ</code></pre>
+    <p>Американец Ве́рни живет в поместье неподалеку от города Ротэнвен.
+    Каждый год он выращивает фрукты и овощи на продажу.
+    Вечером Верни собрал урожай и утром решил отправиться в город на рынок.
+    Этой же ночью прошел шторм и разбил повозку с фруктами и овощами.
+    Помогите Верни собрать в нужном порядке фрукты для продажи.</p>
+generator: ../_scripts/kyzylborda-lib-generator
+secrets:
+  seed: 3fGT2698kGJyEL4XSAHjm96V42jTBTwe
+  flag: ugra_23n_1s_[1337leet_]{8}
+postscriptum: |
+  <p>Омск увидит не последнюю свою вьюгу,<br/>
+  Вы сломали уцуцугу.</p>
