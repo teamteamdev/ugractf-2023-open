@@ -57,7 +57,7 @@
 Олимпиада была подготовлена командой [team Team].
 
 [Никита Сычев](https://github.com/nsychev) — руководитель команды  
-[Калан Абе](https://github.com/enhydra) — разработчик тасков  
+[Калан Абе](https://github.com/kalan) — разработчик тасков  
 [Коля Амиантов](https://github.com/abbradar) — инженер по надёжности  
 [Астра Андриенко](https://github.com/astrrra) — разработчица тасков  
 [Ваня Клименко](https://github.com/ksixty) — разработчик сайта и платформы, арт-директор  
